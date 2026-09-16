@@ -1,9 +1,5 @@
 import tkinter as tk
 import random
-
-# Number Guessing Game (GUI version)
-# SkillCraft Software Development Internship
-
 number = random.randint(1, 100)
 attempts = 0
 
