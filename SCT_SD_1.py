@@ -1,10 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-
-
 class TemperatureConverter:
-    """Encapsulates the GUI and conversion logic for the Temperature Converter app."""
-
     UNITS = ["Celsius", "Fahrenheit", "Kelvin"]
 
     def __init__(self, root):
@@ -13,12 +9,7 @@ class TemperatureConverter:
         self.root.geometry("420x320")
         self.root.resizable(False, False)
         self.root.configure(bg="#f0f4f8")
-
         self._build_widgets()
-
-    # ------------------------------------------------------------------
-    # UI Construction
-    # ------------------------------------------------------------------
     def _build_widgets(self):
         title_label = tk.Label(
             self.root,
@@ -41,7 +32,6 @@ class TemperatureConverter:
         form_frame = tk.Frame(self.root, bg="#f0f4f8")
         form_frame.pack(pady=5)
 
-        # Input value
         tk.Label(
             form_frame, text="Enter Value:", font=("Segoe UI", 10), bg="#f0f4f8"
         ).grid(row=0, column=0, sticky="w", padx=5, pady=8)
@@ -50,7 +40,6 @@ class TemperatureConverter:
         self.value_entry.grid(row=0, column=1, padx=5, pady=8)
         self.value_entry.focus()
 
-        # From unit
         tk.Label(
             form_frame, text="From:", font=("Segoe UI", 10), bg="#f0f4f8"
         ).grid(row=1, column=0, sticky="w", padx=5, pady=8)
@@ -60,8 +49,6 @@ class TemperatureConverter:
         )
         self.from_unit.current(0)
         self.from_unit.grid(row=1, column=1, padx=5, pady=8)
-
-        # To unit
         tk.Label(
             form_frame, text="To:", font=("Segoe UI", 10), bg="#f0f4f8"
         ).grid(row=2, column=0, sticky="w", padx=5, pady=8)
@@ -72,7 +59,6 @@ class TemperatureConverter:
         self.to_unit.current(1)
         self.to_unit.grid(row=2, column=1, padx=5, pady=8)
 
-        # Convert button
         convert_btn = tk.Button(
             self.root,
             text="Convert",
@@ -86,7 +72,6 @@ class TemperatureConverter:
         )
         convert_btn.pack(pady=15)
 
-        # Result display
         self.result_label = tk.Label(
             self.root,
             text="Result will appear here",
@@ -95,13 +80,7 @@ class TemperatureConverter:
             fg="#2a9d8f",
         )
         self.result_label.pack(pady=10)
-
-        # Bind Enter key to convert
         self.root.bind("<Return>", lambda event: self.convert())
-
-    # ------------------------------------------------------------------
-    # Conversion Logic
-    # ------------------------------------------------------------------
     @staticmethod
     def to_celsius(value, unit):
         """Convert any unit to Celsius (used as an intermediate step)."""
@@ -136,8 +115,6 @@ class TemperatureConverter:
         except ValueError:
             messagebox.showerror("Input Error", "Please enter a valid numeric value.")
             return
-
-        # Validate physical lower bound (absolute zero) for Kelvin input
         if from_u == "Kelvin" and value < 0:
             messagebox.showerror(
                 "Invalid Temperature", "Kelvin values cannot be negative (below absolute zero)."
@@ -146,7 +123,6 @@ class TemperatureConverter:
 
         celsius_value = self.to_celsius(value, from_u)
 
-        # Validate resulting Celsius isn't below absolute zero (-273.15 C)
         if celsius_value < -273.15:
             messagebox.showerror(
                 "Invalid Temperature", "This value is below absolute zero and is not physically valid."
