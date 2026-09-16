@@ -1,19 +1,3 @@
-"""
-Temperature Converter (Celsius / Fahrenheit / Kelvin)
--------------------------------------------------------
-A simple, user-driven GUI application built with Tkinter.
-
-Author : <Your Name>
-Project: Internship - SkillCraft Software Development
-Task   : Task 3 - Temperature Converter with GUI
-
-How to run:
-    python temperature_converter.py
-
-Requirements:
-    - Python 3.x (Tkinter comes pre-installed with standard Python)
-"""
-
 import tkinter as tk
 from tkinter import ttk, messagebox
 
