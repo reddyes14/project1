@@ -4,17 +4,9 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-# Product Data Scraper
-# SkillCraft Software Development Internship
-#
-# Note: This scrapes https://books.toscrape.com, a site built specifically
-# for practicing web scraping. Always check a site's robots.txt and terms
-# of service before scraping a real e-commerce site.
-
 BASE_URL = "https://books.toscrape.com/catalogue/page-{}.html"
 
 RATING_MAP = {"One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5}
-
 
 def scrape_page(page_num):
     url = BASE_URL.format(page_num)
