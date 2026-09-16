@@ -1,11 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Sudoku Solver
-# SkillCraft Software Development Internship
-
 entries = []
-
 
 def is_valid(board, row, col, num):
     for i in range(9):
@@ -94,7 +90,6 @@ grid_frame.pack()
 for r in range(9):
     row_entries = []
     for c in range(9):
-        # shade alternating 3x3 boxes for readability
         box_id = (r // 3) + (c // 3)
         cell_color = BOX_SHADE if box_id % 2 == 0 else BOX_LIGHT
 
